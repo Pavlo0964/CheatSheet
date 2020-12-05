@@ -1,0 +1,106 @@
+Class: All Java codes are defined in a class. A Class has variables and methods.
+	Variables are attributes which define the state of a class.
+	Methods are the place where the exact business logic has to be done.
+
+Access levels for classes, variables, methods, and constructors:
+______________________________________________________________
+|           │ Class │ Package │ Subclass │ Subclass │ World  |
+|           │       │         │(same pkg)│(diff pkg)│        |
+|───────────┼───────┼─────────┼──────────┼──────────┼────────|
+|public     │   +   │    +    │    +     │     +    │   +    | 
+|───────────┼───────┼─────────┼──────────┼──────────┼────────|
+|protected  │   +   │    +    │    +     │     +    │        | 
+|───────────┼───────┼─────────┼──────────┼──────────┼────────|
+|no modifier│   +   │    +    │    +     │          │        | 
+|───────────┼───────┼─────────┼──────────┼──────────┼────────|
+|private    │   +   │         │          │          │        |
+|___________|_______|_________|__________|__________|________|
+ + : accessible         blank : not accessible
+
+Constructor: When a new object is created in a program a constructor gets invoked corresponding to the class.
+	The constructor is a method which has the same name as class name.
+	If a user doesn’t create a constructor implicitly a default constructor will be created.
+	The constructor can be overloaded.
+	If the user created a constructor with a parameter then he should create another constructor explicitly without a parameter.
+
+Object: An instance of a class is called object. The object has state and behavior.
+	Whenever the JVM reads the “new()” keyword then it will create an instance of that class.
+
+What are the Oops concepts: Oops concepts include:
+	Inheritance
+	Encapsulation
+	Polymorphism
+	Abstraction
+	Interface
+
+Inheritance: one class can extend to another class
+
+Encapsulation: 
+	Protects the code from others.
+	Code maintainability.
+
+
+Polymorphism is applicable for overriding and not for overloading.
+
+Method overriding happens if the sub class method satisfies the below conditions with the Super class method:
+	Method name should be same
+	Argument should be same
+	Return type also should be same
+
+Method overloading happens for different classes or within the same class.
+
+For method overloading, subclass method should satisfy the below conditions with the Super class method (or) methods in the same class itself:
+	Same method name
+	Different argument type
+	May have different return types
+
+Interface: Multiple inheritance cannot be achieved in java. To overcome this problem Interface concept is introduced.
+	interface is a template which has only method declarations and not the method implementation.
+	All the methods in the interface are internally public abstract void.
+	All the variables in the interface are internally public static final that is constants.
+	Classes can implement the interface and not extends.
+	The class which implements the interface should provide an implementation for all the methods declared in the interface.
+	
+Abstract class: can have both “Abstract” methods and “Non-abstract” methods that are a concrete class.
+Abstract method has only the declaration and not the implementation.
+
+Difference between Abstract Class and Interface are as follows:
+
+Abstract Class:
+	Abstract classes have a default constructor and it is called whenever the concrete subclass is instantiated.
+	Contains Abstract methods as well as Non-Abstract methods.
+	The class which extends the Abstract class shouldn’t require implementing all the methods, only Abstract methods need to be implemented in the concrete sub-class.
+	Abstract Class contains instance variables.
+
+Interface:
+	Doesn’t have any constructor and couldn’t be instantiated.
+	Abstract method alone should be declared.
+	Classes which implement the interface should provide the implementation for all the methods.
+	The interface contains only constants.
+
+this() represents the current instance of a class
+super() represents the current instance of a parent/base class
+
+
+Annotation	
+The first main distinction between kinds of annotation is whether they're used at compile time and then discarded (like @Override) 
+or placed in the compiled class file and available at runtime (like Spring's @Component). 
+This is determined by the @Retention policy of the annotation. 
+If you're writing your own annotation, you'd need to decide whether the annotation is helpful at runtime (for autoconfiguration, perhaps) or only at compile time (for checking or code generation).
+
+When compiling code with annotations, the compiler sees the annotation just like it sees other modifiers on source elements, 
+like access modifiers (public/private) or final. When it encounters an annotation, it runs an annotation processor, which is like a plug-in class that says it's interested a specific annotation. 
+The annotation processor generally uses the Reflection API to inspect the elements being compiled and may simply run checks on them, 
+modify them, or generate new code to be compiled. @Override is an example of the first; 
+it uses the Reflection API to make sure it can find a match for the method signature in one of the superclasses and uses the Messager to cause a compile error if it can't.
+
+annotation type(@interface):
+@interface ClassPreamble {
+       String author();
+
+gets compiled to interface type:
+
+interface annotationtype.ClassPreamble extends java.lang.annotation.Annotation{
+    public abstract java.lang.String author();
+
+Automatic build tool: Apache Ant or Apache Maven
